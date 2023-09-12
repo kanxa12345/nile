@@ -4,6 +4,7 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 function Clients() {
+    const images = ['alstom.png', 'kepco.png', 'manco.png', 'ottawa.png', 'punj-lloyd.jpg', 'technip.png']
     const options = {
         items: 3,
         loop: true,
@@ -13,10 +14,10 @@ function Clients() {
         autoplayTimeout: 4000,
         responsive: {
             0: {
-                items: 1
+                items: 3
             },
             600: {
-                items: 2
+                items: 4
             },
             1000: {
                 items: 5
@@ -27,14 +28,13 @@ function Clients() {
     return (
         <section className='py-12'>
             <div className='container flex flex-col items-center'>
-                <h2 className='text-4xl font-bold text-center pb-2 mb-10 relative pseudo-border'>Our Precious Clients</h2>
+                <h2 className='lg:text-4xl sm:text-3xl text-2xl font-bold text-center pb-2 mb-10 relative pseudo-border' data-aos="fade-up" data-aos-duration="1000" data-aos-once='true'>Our Precious Clients</h2>
                 <OwlCarousel className="owl-theme" {...options}>
-                    <div className="item flex justify-center items-center clients-image"><img src="src/assets/images/clients-images/alstom.png" alt="alstom" /></div>
-                    <div className="item flex justify-center items-center clients-image"><img src="src/assets/images/clients-images/kepco.png" alt="kepco" /></div>
-                    <div className="item flex justify-center items-center clients-image"><img src="src/assets/images/clients-images/manco.png" alt="manco" /></div>
-                    <div className="item flex justify-center items-center clients-image"><img src="src/assets/images/clients-images/ottawa.png" alt="ottawa" /></div>
-                    <div className="item flex justify-center items-center clients-image"><img src="src/assets/images/clients-images/punj-lloyd.jpg" alt="punj-lloyd" /></div>
-                    <div className="item flex justify-center items-center clients-image"><img src="src/assets/images/clients-images/technip.png" alt="technip" /></div>
+                    {images.map((image, index) => (
+                        <div className="item flex justify-center items-center clients-image" key={index}>
+                            <img src={`/src/assets/images/clients-images/${image}`} alt="clients" />
+                        </div>
+                    ))}
                 </OwlCarousel>
             </div>
         </section>

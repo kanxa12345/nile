@@ -4,10 +4,10 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 function Slider() {
+    const images = ['img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg', 'img5.jpg']
     const options = {
         items: 3,
         loop: true,
-        // margin: 10,
         autoplay: true,
         dots: false,
         autoplayTimeout: 5000,
@@ -15,30 +15,24 @@ function Slider() {
             0: {
                 items: 1
             },
-            // 600: {
-            //     items: 2
-            // },
-            // 1000: {
-            //     items: 3
-            // }
         }
     };
 
     return (
-        <section className='relative'>
-            <div>
-                <OwlCarousel className="owl-theme" {...options}>
-                    <div className="item carousel-image"><img src="src/assets/images/slider-image/img1.jpg" alt="Image 1" /></div>
-                    <div className="item carousel-image"><img src="src/assets/images/slider-image/img2.jpg" alt="Image 2" /></div>
-                    <div className="item carousel-image"><img src="src/assets/images/slider-image/img3.jpg" alt="Image 3" /></div>
-                    <div className="item carousel-image"><img src="src/assets/images/slider-image/img4.jpg" alt="Image 4" /></div>
-                    <div className="item carousel-image"><img src="src/assets/images/slider-image/img5.jpg" alt="Image 5" /></div>
+        <section className='relative lg:py-[204px] md:py-[180px] sm:py-[146px] py-[141px] slider-section'>
+            <div className='absolute w-full h-full top-0 left-0'>
+                <OwlCarousel className="owl-theme h-full" {...options}>
+                    {images.map((image, index) => (
+                        <div className="item" key={index}>
+                            <img src={`/src/assets/images/slider-image/${image}`} alt="slider" />
+                        </div>
+                    ))}
                 </OwlCarousel>
             </div>
-            <div className="overlay absolute w-full z-10 h-full"></div>
-            <div className="container absolute z-20 text-center quote-section">
-                <h1 className='text-white font-extrabold text-5xl mb-2'>DISCOVER YOUR GLOBAL POTENTIAL</h1>
-                <h2 className='text-white font-semibold text-3xl'>EMBRACE THE WORLD WITH US</h2>
+            <div className="bg-gradient-to-t from-black to-transparent opacity-60 absolute w-full z-10 h-full top-0 left-0"></div>
+            <div className="container relative z-20 text-center" data-aos="zoom-in" data-aos-duration="1000" data-aos-once='true'>
+                <h1 className='text-white font-extrabold lg:text-5xl md:text-4xl sm:text-3xl text-2xl mb-2'>DISCOVER YOUR GLOBAL POTENTIAL</h1>
+                <h2 className='text-white font-semibold md:text-3xl sm:text-xl text-lg'>EMBRACE THE WORLD WITH US</h2>
             </div>
         </section>
     )

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import "./App.css";
@@ -15,38 +15,60 @@ import Vacancy from "./pages/job/Vacancy";
 import Gallery from "./pages/about/Gallery";
 import RequiredDocument from "./pages/service/RequiredDocument";
 import OrganizationChart from "./pages/about/OrganizationChart";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Vision from "./pages/about/Vision";
-import Mission from "./pages/about/Mission";
 import Objective from "./pages/about/Objective";
 import RecruitmentProcess from "./pages/service/RecruitmentProcess";
+import GoToTopButton from './components/GoToTopButton';
+import Unskilled from './pages/category/Unskilled';
+import Skilled from './pages/category/Skilled';
+import SemiSkilled from './pages/category/SemiSkilled';
+import HighSkilled from './pages/category/HighSkilled';
+import ClientCandidateMatching from './pages/service/ClientCandidateMatching';
+import IndustryExpertise from './pages/service/IndustryExpertise';
+import OfferDetail from './pages/home/OfferDetail';
+import NotFound from './components/NotFound';
+import LegalDocument from './pages/about/LegalDocument';
+import MissionVision from './pages/about/MissionVision';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
+  const animatedRef = useRef(false);
   useEffect(() => {
-    Aos.init();
-  }, [])
+    if (!animatedRef.current) {
+      Aos.init();
+      animatedRef.current = true;
+    }
+  }, []);
   return (
     <>
       <Router>
         <Header />
         <Routes>
-          <Route exact path="/" element={<Homepage />}></Route>
-          <Route exact path="/WhoWeAre" element={<WhoWeAre />}></Route>
-          <Route exact path="/CompanyProfile" element={<CompanyProfile />}></Route>
-          <Route exact path="/ChairmanMessage" element={<ChairmanMessage />}></Route>
-          <Route exact path="/Mission" element={<Mission />}></Route>
-          <Route exact path="/Vision" element={<Vision />}></Route>
-          <Route exact path="/Objective" element={<Objective />}></Route>
-          <Route exact path="/OrganizationChart" element={<OrganizationChart />}></Route>
-          <Route exact path="/Gallery" element={<Gallery />}></Route>
-          <Route exact path="/RequiredDocument" element={<RequiredDocument />}></Route>
-          <Route exact path="/RecruitmentProcess" element={<RecruitmentProcess />}></Route>
-          <Route exact path="/Vacancy" element={<Vacancy />}></Route>
-          <Route exact path="/NewspaperVacancy" element={<NewspaperVacancy />}></Route>
-          <Route exact path="/Category" element={<Category />}></Route>
-          <Route exact path="/Contact" element={<Contact />}></Route>
+          <Route exact path="/" element={<Homepage />} />
+          <Route exact path="/Offer/:id" element={<OfferDetail />} />
+          <Route exact path="/WhoWeAre" element={<WhoWeAre />} />
+          <Route exact path="/CompanyProfile" element={<CompanyProfile />} />
+          <Route exact path="/ChairmanMessage" element={<ChairmanMessage />} />
+          <Route exact path="/MissionVision" element={<MissionVision />} />
+          <Route exact path="/Objective" element={<Objective />} />
+          <Route exact path="/OrganizationChart" element={<OrganizationChart />} />
+          <Route exact path="/LegalDocument" element={<LegalDocument />} />
+          <Route exact path="/Gallery" element={<Gallery />} />
+          <Route exact path="/RequiredDocument" element={<RequiredDocument />} />
+          <Route exact path="/RecruitmentProcess" element={<RecruitmentProcess />} />
+          <Route exact path="/ClientCandidateMatching" element={<ClientCandidateMatching />} />
+          <Route exact path="/IndustryExpertise" element={<IndustryExpertise />} />
+          <Route exact path="/Vacancy" element={<Vacancy />} />
+          <Route exact path="/NewspaperVacancy" element={<NewspaperVacancy />} />
+          <Route exact path="/Category" element={<Category />} />
+          <Route exact path="/Unskilled" element={<Unskilled />} />
+          <Route exact path="/SemiSkilled" element={<SemiSkilled />} />
+          <Route exact path="/Skilled" element={<Skilled />} />
+          <Route exact path="/HighSkilled" element={<HighSkilled />} />
+          <Route exact path="/Contact" element={<Contact />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer />
+        <GoToTopButton />
       </Router>
     </>
   );
