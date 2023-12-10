@@ -49,13 +49,6 @@
   left: 0;
   content: "";
 }
-.clients-image {
-  height: 70px !important;
-}
-.clients-image img {
-  width: 80% !important;
-  object-fit: contain !important;
-}
 
 /* about section */
 .image-shape img {
