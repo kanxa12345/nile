@@ -13,10 +13,12 @@ function Clients() {
         '/src/assets/images/clients-images/technip.png',
     ]
 
+    const numImages = images.length;
+
     const settings = {
         infinite: true,
         speed: 500,
-        slidesToShow: 5,
+        slidesToShow: numImages > 5 ? 5 : numImages,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 4000,
@@ -26,19 +28,19 @@ function Clients() {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 4,
+                    slidesToShow: numImages > 4 ? 4 : numImages,
                 }
             },
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: numImages > 3 ? 3 : numImages,
                 }
             },
             {
                 breakpoint: 546,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: numImages > 2 ? 2 : numImages,
                 }
             },
         ]
@@ -51,7 +53,7 @@ function Clients() {
                     <Slider {...settings}>
                         {images.map((image, index) => (
                             <div key={index} className="flex justify-center items-center h-full">
-                                <img className='sm:h-[60px] h-[50px] w-[60%] p-2 bg-white' src={image} alt="clients" />
+                                <img className='sm:h-[60px] h-[50px] w-[60%] p-2' src={image} alt="clients" />
                             </div>
                         ))}
                     </Slider>
